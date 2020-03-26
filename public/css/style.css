@@ -1,0 +1,119 @@
+.informations{
+    display: none;
+}
+.direct{
+    height: 300px;
+    width: 100%;
+    background: black;
+    text-align: center;
+    padding-top: 20%;
+}
+.direct h2{
+    color: white;
+    font-weight: bolder;
+}
+
+.cours-info{
+    text-align: center;
+    height: 300px;
+    padding-top: 10%;
+}
+
+.cours-info h3{
+   color: orangered;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+.cours-info h4{
+    color: orangered;
+    font-weight: bolder;
+    margin: 20px;
+}
+.cours-info h5{
+    color: orangered;
+    font-weight: bolder;
+    margin: 7px;
+}
+
+.cours_chat{
+    width: 100%;
+    height: 500px;
+    border: 1px solid darkgrey;
+}
+
+.chat_content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid darkgrey;
+}
+.cours_chat .messages,.chat_content .messages{
+    height: 90%;
+    padding: 8px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.cours_chat .messages .message{
+   border-radius: 25px;
+    border: 1px solid darkgrey;
+    width: 250px;
+    background: blue;
+    padding: 5px;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+.chat_content .messages .message{
+    border-radius: 25px;
+    border: 1px solid darkgrey;
+    width: 350px;
+    background: blue;
+    padding: 5px;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+.cours_chat .messages .message h6,.chat_content .messages .message h6{
+   font-weight: bolder;
+    font-family: 'arial black';
+}
+
+.cours_chat .messages .message p, .chat_content .messages .message p{
+        color: white;
+}
+
+
+
+.cours_chat .envoie__message, .chat_content .envoie__message{
+    width: 100%;
+}
+
+.cours_chat .envoie__message form input, .chat_content .envoie__message form input{
+    width: 88%;
+    height: 45px;
+}
+
+.cours_chat .envoie__message form button, .chat_content .envoie__message form button{
+    width: 11% !important ;
+    margin-left: -5px;
+    height:45px;
+}
+
+
+.forums ul{
+    list-style-type: none;
+}
+
+.forums ul li a{
+  text-decoration: none;
+    color: black;
+}
+.forums ul li div{
+    width: 100%;
+    border: 1px solid darkgrey;
+    margin: 10px;
+    height: 105px;
+    padding: 15px;
+    padding-left: 25px;
+}

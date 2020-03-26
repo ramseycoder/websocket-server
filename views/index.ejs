@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+     <h1>Testing api</h1>
+  </body>
+   <script src="/js/jquery-3.4.1.min.js"></script>
+  <script>
+      $(() => {
+        $.ajax({
+          url: 'http://192.168.43.156:3000/api/setForum',
+          method: "POST",
+          dataType: 'application/json',
+          data: {
+            "nom_ets":"Lycée Lauraine",
+            "nom_classe":"6eme",
+            "nom_matiere":"Mathématiques",
+            "title_chat":"Les Fonctions"
+          },
+          success: (data) => {
+            console.log('eeeer',data);
+          }
+        })
+      })
+  </script>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/mdb.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>user home</title>
+</head>
+<body>
+<div class="navbar navbar-light navbar-expand-xl">
+    <div class="navbar-brand">
+        <h6>GouvApp</h6>
+    </div>
+    <ol class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/test/users">Home</a></li>
+        <li class="nav-item"><a class="nav-link">Cours</a></li>
+        <li class="nav-item"><a class="nav-link">Quizz</a></li>
+        <li class="nav-item"><a class="nav-link">Corrections</a></li>
+        <li class="nav-item active"><a class="nav-link" href="#">Forums</a></li>
+    </ol>
+</div>
+<br>
+<div class="container">
+    <div class="forums">
+        <ul>
+            <% for(const forum of forums){%>
+                <li>
+                    <a href="/test/users/forum/<%= forum._id %>">
+                        <div class="forum">
+                            <h3><%= forum.title %></h3>
+                            <p><%= forum.subject %></p>
+                        </div>
+                    </a>
+                </li>
+            <%}%>
+        </ul>
+    </div>
+</div>
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/mdb.min.js"></script>
+<script>
+    const ws = new WebSocket('ws://localhost:8090');
+    ws.onopen = (evt) => {
+        ws.send(JSON.stringify({"type":"getUrl","url":window.origin+location.pathname}))
+    }
+
+    ws.onmessage = (evt) => {
+        const m = JSON.parse(evt.data);
+        if(m.type === "addMessageChat"){
+            let html = $('.cours_chat .messages').html();
+            $('.cours_chat .messages').html(html+`
+                        <div class="message">
+                            <h6>${m.data.username}</h6>
+                            <p>${m.data.message}</p>
+                        </div>
+                    `);
+            $('.envoie__message form input').val('');
+        }
+    }
+    $('.envoie__message form').on('submit',(e)=>{
+        e.preventDefault();
+        const data = {
+            nom_classe: $('.informations').attr('data-ets') + '/' + $('.informations').attr('data-classe'),
+            nom_matiere: $('.informations').attr('data-matiere'),
+            title_chat: $('.informations').attr('data-cours'),
+            username: 'le tester',
+            message: $('.envoie__message form input').val()
+        }
+        ws.send(JSON.stringify({"type":"addMessageChat","data":data}));
+    })
+</script>
+</body>
+</html>
